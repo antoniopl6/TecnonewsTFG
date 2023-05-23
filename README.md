@@ -1,4 +1,4 @@
-# Tenconews Aviso de Privacidad
+# Tecnonews Aviso de Privacidad
  
 La empresa Tecnonews conforme con lo establecido en la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales ponemos a disposición de nuestros clientes, proveedores y público el presente aviso de privacidad.
 
