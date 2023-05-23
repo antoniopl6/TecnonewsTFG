@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "feliz cumpleaños",
+            "invocationName": "buon compleanno",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
@@ -22,13 +22,13 @@
                             "name": "day",
                             "type": "AMAZON.NUMBER",
                             "samples": [
-                                "el día {day}",
+                                "il giorno {day}",
                                 "{day}",
-                                "el {day}",
-                                "{day} de {month}",
-                                "el {day} de {month}",
-                                "{day} de {month} de {year}",
-                                "el {day} de {month} de {year}"
+                                "il {day}",
+                                "{day} di {month}",
+                                "il {day} di {month}",
+                                "{day} di {month} {year}",
+                                "il {day} di {month} del {year}"
                             ]
                         },
                         {
@@ -36,33 +36,32 @@
                             "type": "MonthType",
                             "samples": [
                                 "{month}",
-                                "en {month}",
-                                "mes de {month}",
-                                "el mes de {month}",
-                                "{day} de {month}",
-                                "el {day} de {month}",
-                                "{day} de {month} de {year}",
-                                "el {day} de {month} de {year}"
+                                "a {month}",
+                                "mese di {month}",
+                                "il mese di {month}",
+                                "{day} di {month}",
+                                "il {day} di {month}",
+                                "{day} di {month} del {year}",
+                                "il {day} di {month} del {year}"
                             ]
                         },
                         {
                             "name": "year",
                             "type": "AMAZON.FOUR_DIGIT_NUMBER",
                             "samples": [
-                                "de {year}",
+                                "il {year}",
                                 "del {year}",
-                                "he nacido en el {year}",
-                                "he nacido en el año {year}",
-                                "año {year}",
-                                "en el {year}",
-                                "en el año {year}",
-                                "el año {year}",
-                                "del año {year}",
+                                "sono nato nel {year}",
+                                "sono nata nel {year}",
+                                "anno {year}",
+                                "nel {year}",
+                                "nell'anno {year}",
+                                "l'anno {year}",
                                 "{year}",
-                                "{day} de {month} de {year}",
-                                "el {day} de {month} de {year}",
-                                "{month} de {year}",
-                                "en {month} de {year}"
+                                "{day} di {month} del {year}",
+                                "il {day} di {month} del {year}",
+                                "{month} di {year}",
+                                "a {month} del {year}"
                             ]
                         }
                     ],
@@ -70,48 +69,24 @@
                         "{day}",
                         "{month}",
                         "{month} del {year}",
-                        "{month} de {year}",
-                        "{day} del {month}",
-                        "en el año {year}",
-                        "he nacido en {year}",
-                        "nací en {year}",
-                        "para el {day} de {month}",
-                        "con el {day} de {month}",
-                        "para el {day} de {month} de {year}",
-                        "con el {day} de {month} de {year}",
-                        "mi fecha de nacimiento es el {day} de {month} de {year}",
-                        "mi cumpleaños es el {day} de {month} de {year}",
-                        "mi cumple es el {day} de {month} de {year}",
-                        "mi cumpleaños es el {day} de {month}",
-                        "mi cumple es el {day} de {month}",
-                        "he nacido el {day} de {month} de {year}",
-                        "nací el {day} de {month} de {year}",
-                        "{day} de {month} de {year}",
-                        "cumplo el {day} de {month} de {year}",
-                        "{month} {day}",
-                        "{day} de {month}",
-                        "cumplo el {day} de {month}",
-                        "he nacido el {day} de {month}",
-                        "nací el {day} de {month}",
-                        "el {day}",
-                        "en {month}",
-                        "cumplo el {day}",
-                        "cumplo en {month}",
-                        "registra mi cumple",
-                        "graba mi cumple",
-                        "recuerda mi cumple",
-                        "registra mi cumpleaños",
-                        "registra mi fecha de cumpleaños",
-                        "recordar mi cumple",
-                        "recordar mi cumpleaños",
-                        "apunta mi cumple",
-                        "apunta mi cumpleaños",
-                        "toma nota de mi cumple",
-                        "toma nota de mi cumpleaños",
-                        "anota mi cumple",
-                        "anota mi cumpleaños",
-                        "graba mi cumpleaños",
-                        "recuerda mi cumpleaños"
+                        "{day} di {month}",
+                        "l'anno {year}",
+                        "nel {year}",
+                        "sono nato nel {year}",
+                        "nacqui nel {year}",
+                        "il {day} di {month}",
+                        "nel giorno {day} di {month}",
+                        "la mia data di nascita è il {day} di {month} del {year}",
+                        "la mia data di nascita è il {day} {month} {year}",
+                        "sono nato il {day} {month} {year}",
+                        "il mio compleanno è il {day} {month} {year}",
+                        "ricorda il mio compleanno",
+                        "registra il mio compleanno",
+                        "registra la mia data di nascita",
+                        "ricordati il mio compleanno",
+                        "segnati il mio comple",
+                        "prendi nota del mio comple",
+                        "prendi nota del mio compleanno"
                     ]
                 },
                 {
@@ -122,36 +97,18 @@
                     "name": "SayBirthdayIntent",
                     "slots": [],
                     "samples": [
-                        "cuando cumplo años",
-                        "cuando cumplo",
-                        "cuanto falta",
-                        "cuanto falta para mi cumpleaños",
-                        "cuanto falta para mi cumple",
-                        "cuanto queda",
-                        "cuanto queda para mi cumpleaños",
-                        "cuanto queda para mi cumple",
-                        "tiempo restante para mi cumpleaños",
-                        "tiempo restante para mi cumple",
-                        "dame mi cumpleaños",
-                        "dame mi cumple",
-                        "mi cumpleaños",
-                        "mi cumple",
-                        "cumpleaños",
-                        "cumple",
-                        "cuando es mi cumpleaños",
-                        "cuando es mi cumple",
-                        "dime mi cumpleaños",
-                        "dime mi cumple",
-                        "dime cuando cumplo años",
-                        "dime cuando cumplo",
-                        "dime cuanto falta",
-                        "dime cuanto falta para mi cumpleaños",
-                        "dime cuanto falta para mi cumple",
-                        "dime cuanto queda",
-                        "dime cuanto queda para mi cumpleaños",
-                        "dime cuanto queda para mi cumple",
-                        "dime cuando es mi cumpleaños",
-                        "dime cuando es mi cumple"
+                        "il mio prossimo compleanno",
+                        "prossimo compleanno",
+                        "quando è il mio compleanno",
+                        "il mio compleanno",
+                        "quanto manca al mio compleanno",
+                        "giorni al mio compleanno",
+                        "compleanno",
+                        "info compleanno",
+                        "dimmi i giorni rimasti al mio compleanno",
+                        "dimmi quanto manca al mio compleanno",
+                        "quanti giorni",
+                        "quanto manca"
                     ]
                 },
                 {
@@ -166,68 +123,25 @@
                         }
                     ],
                     "samples": [
-                        "recordatorio",
-                        "configura un recordatorio",
-                        "pon un recordatorio",
-                        "crea un recordatorio",
-                        "recordatorio para mi cumpleaños",
-                        "configura un recordatorio para mi cumpleaños",
-                        "pon un recordatorio para mi cumpleaños",
-                        "crea un recordatorio para mi cumpleaños",
-                        "recordatorio para mi cumple",
-                        "configura un recordatorio para mi cumple",
-                        "pon un recordatorio para mi cumple",
-                        "crea un recordatorio para mi cumple",
-                        "recordatorio con el texto {message}",
-                        "configura un recordatorio con el texto {message}",
-                        "pon un recordatorio con el texto {message}",
-                        "crea un recordatorio con el texto {message}",
-                        "recordatorio con el mensaje {message}",
-                        "configura un recordatorio con el mensaje {message}",
-                        "pon un recordatorio con el mensaje {message}",
-                        "crea un recordatorio con el mensaje {message}",
-                        "recordatorio con texto {message}",
-                        "configura un recordatorio con texto {message}",
-                        "pon un recordatorio con texto {message}",
-                        "crea un recordatorio con texto {message}",
-                        "recordatorio con mensaje {message}",
-                        "configura un recordatorio con mensaje {message}",
-                        "pon un recordatorio con mensaje {message}",
-                        "crea un recordatorio con mensaje {message}"
+                        "promemoria",
+                        "reminder",
+                        "ricordami il mio compleanno",
+                        "configura un promemoria",
+                        "imposta un promemoria",
+                        "imposta un promemoria per il mio compleanno",
+                        "promemoria con il testo {message}",
+                        "configura un reminder con il testo {message}",
+                        "inserisci un reminder con il testo {message}"
                     ]
                 },
                 {
                     "name": "CelebrityBirthdaysIntent",
                     "slots": [],
                     "samples": [
-                        "dime quienes cumplen años hoy",
-                        "dime quien cumple años hoy",
-                        "quienes cumplen años hoy",
-                        "quien cumple años hoy",
-                        "quienes cumplen",
-                        "quien cumple",
-                        "quienes cumplen años",
-                        "quien cumple años",
-                        "quienes cumplen hoy",
-                        "quien cumple hoy",
-                        "que famosos cumplen años hoy",
-                        "que celebridades cumplen años hoy",
-                        "quiénes cumplen hoy",
-                        "dime quién cumple hoy",
-                        "quién cumple hoy",
-                        "cumples de hoy",
-                        "cumples del día",
-                        "cumpleaños de hoy",
-                        "cumpleaños del día",
-                        "cumpleaños de celebridades",
-                        "cumples de celebridades",
-                        "cumpleaños de famosos",
-                        "cumples de famosos",
-                        "dime quiénes cumplen años hoy",
-                        "dime quién cumple años hoy",
-                        "quiénes cumplen años hoy",
-                        "quién cumple años hoy",
-                        "qué famosos cumplen años hoy"
+                        "chi compie gli anni oggi",
+                        "chi festeggia gli anni oggi",
+                        "quali attori festeggiano gli anni oggi",
+                        "chi altro festeggia gli anni oggi"
                     ]
                 }
             ],
@@ -238,25 +152,25 @@
                         {
                             "id": "12",
                             "name": {
-                                "value": "diciembre"
+                                "value": "dicembre"
                             }
                         },
                         {
                             "id": "11",
                             "name": {
-                                "value": "noviembre"
+                                "value": "novembre"
                             }
                         },
                         {
                             "id": "10",
                             "name": {
-                                "value": "octubre"
+                                "value": "ottobre"
                             }
                         },
                         {
                             "id": "09",
                             "name": {
-                                "value": "septiembre"
+                                "value": "settembre"
                             }
                         },
                         {
@@ -268,25 +182,25 @@
                         {
                             "id": "07",
                             "name": {
-                                "value": "julio"
+                                "value": "luglio"
                             }
                         },
                         {
                             "id": "06",
                             "name": {
-                                "value": "junio"
+                                "value": "giugno"
                             }
                         },
                         {
                             "id": "05",
                             "name": {
-                                "value": "mayo"
+                                "value": "maggio"
                             }
                         },
                         {
                             "id": "04",
                             "name": {
-                                "value": "abril"
+                                "value": "aprile"
                             }
                         },
                         {
@@ -298,16 +212,15 @@
                         {
                             "id": "02",
                             "name": {
-                                "value": "febrero"
+                                "value": "febbraio"
                             }
                         },
                         {
                             "id": "01",
                             "name": {
-                                "value": "enero",
+                                "value": "gennaio",
                                 "synonyms": [
-                                    "primero",
-                                    "primer mes del año"
+                                    "il primo mese dell'anno"
                                 ]
                             }
                         }
@@ -410,19 +323,19 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "vale. me has dicho que cumples en {month} pero que día?"
+                        "value": "Ok, {month} ma quale giorno?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "que día cumples años?"
+                        "value": "che numero del mese?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "en que día es tu cumpleaños?"
+                        "value": "quale giorno è il tuo compleanno di preciso?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "dime en que día del mes es tu cumpleaños"
+                        "value": "dimmi quale giorno del mese è il tuo compleanno"
                     }
                 ]
             },
@@ -431,19 +344,19 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "dime ahora el mes en que cumples años"
+                        "value": "ora dimmi il mese che festeggi il compleanno"
                     },
                     {
                         "type": "PlainText",
-                        "value": "en que mes cumples años?"
+                        "value": "di quale mese?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "en que mes es tu cumpleaños?"
+                        "value": "di quale mese sei?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "vale, cumples el día {day} .pero en que mes?"
+                        "value": "capito, compi gli anni il {day}. Di quale mese?"
                     }
                 ]
             },
@@ -452,7 +365,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Por favor dime un día mayor o igual que uno"
+                        "value": "Per favore dimmi un numero maggiore o uguale a uno."
                     }
                 ]
             },
@@ -461,7 +374,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Por favor dime un día menor o igual a treinta y uno"
+                        "value": "Per favore dimmi un numero minore o uguale a uno."
                     }
                 ]
             },
@@ -470,7 +383,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Por favor dime un mes válido"
+                        "value": "Per favore dimmi un mese valido."
                     }
                 ]
             },
@@ -479,19 +392,19 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "eres de {month} de que año?"
+                        "value": "sei nato a {month}, ma di che anno?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "vale. el {day} de {month} . de que año?"
+                        "value": "Ok. Il {day} di {month} . Di che anno?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "ahora dime el año de tu nacimiento"
+                        "value": "Dimmi ora il tuo anno di nascita."
                     },
                     {
                         "type": "PlainText",
-                        "value": "en que año has nacido?"
+                        "value": "E ora il tuo anno di nascita?"
                     }
                 ]
             },
@@ -500,7 +413,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "No creo que tengas tantos años. Inténtalo otra vez"
+                        "value": "Mhh, non penso tu abbia cosi tanti anni. Prova di nuovo"
                     }
                 ]
             },
@@ -509,7 +422,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "No creo que tengas tan pocos años. Inténtalo otra vez"
+                        "value": "Mhh, non credo che tu abbia cosi pochi anni. Prova di nuovo"
                     }
                 ]
             },
@@ -518,11 +431,11 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Entonces el {day} de {month} de {year} . es correcto?"
+                        "value": "il {day} di {month} del {year} . Giusto?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "Estás seguro que quieres registrar el {day} de {month} de {year} ?"
+                        "value": "Confermi la data è il {day} di {month} del {year} ?"
                     }
                 ]
             },
@@ -531,15 +444,11 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Cual es el mensaje para el recordatorio?"
+                        "value": "Qual è il messaggio del promemoria?"
                     },
                     {
                         "type": "PlainText",
-                        "value": "Genial. Ahora dime el mensaje a leer cuando se active el recordatorio"
-                    },
-                    {
-                        "type": "PlainText",
-                        "value": "Vale. Dime por favor el mensaje para el recordatorio"
+                        "value": "Ottimo, dimmi il contenuto del promemoria"
                     }
                 ]
             },
@@ -548,11 +457,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "El mensaje. {message} .Será enviado cuando cumplas años. Lo confirmas?"
-                    },
-                    {
-                        "type": "PlainText",
-                        "value": "Te enviaré el siguiente mensaje cuando cumplas años. {message} . De acuerdo?"
+                        "value": "Registrerò come promemoria il seguente messaggio. {message}. Giusto?"
                     }
                 ]
             }
