@@ -1,0 +1,45 @@
+{
+    "type": "APL",
+    "description": "Display for the beginning of the game",
+    "version": "1.1",
+    "settings": {},
+    "theme": "dark",
+    "import": [
+        {
+            "name": "alexa-layouts",
+            "version": "1.1.0"
+        }
+    ],
+    "styles": {},
+    "onMount": [],
+    "graphics": {},
+    "commands": {},
+    "layouts": {},
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            {
+                "type": "Container",
+                "width": "100%",
+                "height": "100%",
+                "items": [
+                    {
+                        "type": "AlexaBackground",
+                        "backgroundColor": "rgb(26,42,55)"
+                    },
+                    {
+                        "type": "Text",
+                        "width": "100%",
+                        "height": "100%",
+                        "lang": "${payload.data.properties.locale}",
+                        "text": "${payload.data.properties.startMessage}",
+                        "textAlign": "center",
+                        "textAlignVertical": "center"
+                    }
+                ]
+            }
+        ]
+    }
+}

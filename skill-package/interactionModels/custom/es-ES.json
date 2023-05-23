@@ -1,0 +1,48 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "celebridad mayor o menor",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "CelebrityIntent",
+          "slots": [
+            {
+              "name": "celebrity",
+              "type": "AMAZON.Person"
+            }
+          ],
+          "samples": [
+            "mmm {celebrity}",
+            "Quizá {celebrity}",
+            "puede ser {celebrity}",
+            "Qué tal {celebrity}",
+            "a ver {celebrity}",
+            "{celebrity}"
+          ]
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "3"
+}

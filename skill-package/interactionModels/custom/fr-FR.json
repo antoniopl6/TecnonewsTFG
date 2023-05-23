@@ -1,0 +1,48 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "célébrité plus âgée ou plus jeune",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "CelebrityIntent",
+          "slots": [
+            {
+              "name": "celebrity",
+              "type": "AMAZON.Person"
+            }
+          ],
+          "samples": [
+            "probablement {celebrity}",
+            "euhh {celebrity}",
+            "{celebrity} peut-être",
+            "pourquoi pas {celebrity}",
+            "je ne sais pas {celebrity}",
+            "{celebrity}"
+          ]
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "2"
+}

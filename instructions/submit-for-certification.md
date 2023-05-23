@@ -1,7 +1,5 @@
-# Build An Alexa Fact Skill
+# Build An Alexa Entities Skill
 <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
-
-Build an engaging facts skill about any topic. Alexa will select a fact at random and share it with the user when the skill is invoked.
 
 ## Get Your Skill Certified and Published
 
@@ -22,7 +20,7 @@ We are almost done!  The last step is to add the metadata that your skill will u
 
        | Common Failure Points for Example Phrases |
        | ----------------------------------------- |
-       | Example phrases **must** adhere to the [supported phrases](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/supported-phrases-to-begin-a-conversation?&sc_category=Owned&sc_channel=RD&sc_campaign=Evangelism2018&sc_publisher=github&sc_content=Survey&sc_detail=fact-nodejs-V2_GUI-6&sc_funnel=Convert&sc_country=WW&sc_medium=Owned_RD_Evangelism2018_github_Survey_fact-nodejs-V2_GUI-6_Convert_WW_beginnersdevs&sc_segment=beginnersdevs). |
+       | Example phrases **must** adhere to the [supported phrases](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/supported-phrases-to-begin-a-conversation). |
        | Example phrases **must** be based on sample utterances specified in your Intent Schema. |
        | Your first example phrase **must** include a wake word and your invocation name. |
        | Example phrases **must** provide a contextual response. |
@@ -86,7 +84,7 @@ We are almost done!  The last step is to add the metadata that your skill will u
 	* Since you are using our Sample, make sure to add a sentence to your Testing Instructions referencing the Sample you used. For example:
 
     ```text
-    This was built using the Fact Sample.
+    This was built using the Pet Tales Sample.
     ```
 
     This will let the testing team understand what you're providing them, and should decrease the testing time required.

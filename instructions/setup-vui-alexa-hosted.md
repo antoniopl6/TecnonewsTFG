@@ -1,7 +1,5 @@
-# Build An Alexa Fact Skill
+# Build An Alexa Entities Skill
 <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
-
-Build an engaging facts skill about any topic. Alexa will select a fact at random and share it with the user when the skill is invoked.
 
 ## Setting up Your Alexa Skill in the Developer Console (Alexa Hosted)
 
@@ -10,7 +8,7 @@ The skill includes a code editor for managing and deploying the backend code for
 For details on what the Alexa-Hosted skills service provides, open [this page](https://developer.amazon.com/docs/hosted-skills/build-a-skill-end-to-end-using-an-alexa-hosted-skill.html) in a new tab.
 
 ### Steps
-Now that you've chosen Alexa-Hosted for the method to host your skill's backend resources, to use this template, select **Fact Skill** and click "Choose". It will take a minute to create your Alexa hosted skill, then you will be taken to the Build tab of the console. It will take a minute to create your Alexa hosted skill, then you will be taken to the Build tab of the console.
+Now that you've chosen Alexa-Hosted for the method to host your skill's backend resources, to use this template, select **Celebrity Older or Younger** and click "Choose". It will take a minute to create your Alexa hosted skill, then you will be taken to the Build tab of the console. It will take a minute to create your Alexa hosted skill, then you will be taken to the Build tab of the console.
 
 
  #### Build the Interaction Model for your skill
@@ -23,4 +21,3 @@ The Interaction Model for any skill lays the general guidelines of speech Alexa 
 
 #### NEXT: Review and Deploy the Alexa-Hosted Code
 [![Next](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/next._TTH_.png)](./create-alexa-hosted-function.md)
-

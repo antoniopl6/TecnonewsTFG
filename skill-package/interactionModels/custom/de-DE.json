@@ -1,0 +1,48 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "promi älter oder jünger",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "CelebrityIntent",
+          "slots": [
+            {
+              "name": "celebrity",
+              "type": "AMAZON.Person"
+            }
+          ],
+          "samples": [
+            "{celebrity}",
+            "hmm {celebrity}",
+            "{celebrity} vielleicht",
+            "vielleicht {celebrity}",
+            "wie sieht es aus mit {celebrity}",
+            "mal sehen {celebrity}"
+          ]
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "2"
+}

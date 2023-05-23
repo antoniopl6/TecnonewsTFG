@@ -1,17 +1,17 @@
-# Build An Alexa Fact Skill
+# Build An Alexa Entities Skill
 <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/fact/header._TTH_.png" />
 
 ## Setup w/ ASK CLI
 
 ### About
-This readme assumes you have your developer environment ready to go and that you have some familiarity with CLI (Command Line Interface) Tools, [AWS](https://aws.amazon.com/), and the [ASK Developer Portal](https://developer.amazon.com/alexa-skills-kit?&sc_category=Owned&sc_channel=RD&sc_campaign=Evangelism2018&sc_publisher=github&sc_content=Content&sc_detail=fact-nodejs-V2_CLI-1&sc_funnel=Convert&sc_country=WW&sc_medium=Owned_RD_Evangelism2018_github_Content_fact-nodejs-V2_CLI-1_Convert_WW_beginnersdevs&sc_segment=beginnersdevs). If not, [click here](./1-voice-user-interface.md) for a more detailed walkthrough.
+This readme assumes you have your developer environment ready to go and that you have some familiarity with CLI (Command Line Interface) Tools, [AWS](https://aws.amazon.com/), and the [ASK Developer Portal](https://developer.amazon.com/alexa-skills-kit).
 
 ### Pre-requisites
 
 * Node.js (> v10.x)
 * Register for an [AWS Account](https://aws.amazon.com/)
-* Register for an [Amazon Developer Account](https://developer.amazon.com?&sc_category=Owned&sc_channel=RD&sc_campaign=Evangelism2018&sc_publisher=github&sc_content=Content&sc_detail=fact-nodejs-V2_CLI-1&sc_funnel=Convert&sc_country=WW&sc_medium=Owned_RD_Evangelism2018_github_Content_fact-nodejs-V2_CLI-1_Convert_WW_beginnersdevs&sc_segment=beginnersdevs)
-* Install and Setup [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html?&sc_category=Owned&sc_channel=RD&sc_campaign=Evangelism2018&sc_publisher=github&sc_content=Content&sc_detail=fact-nodejs-V2_CLI-1&sc_funnel=Convert&sc_country=WW&sc_medium=Owned_RD_Evangelism2018_github_Content_fact-nodejs-V2_CLI-1_Convert_WW_beginnersdevs&sc_segment=beginnersdevs)
+* Register for an [Amazon Developer Account](https://developer.amazon.com)
+* Install and Setup [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html)
 
 ### Installation
 1. **Make sure** you are running the latest version of the CLI
@@ -23,20 +23,20 @@ This readme assumes you have your developer environment ready to go and that you
 2. **Clone** the repository.
 
 	```bash
-	$ git clone https://github.com/alexa/skill-sample-nodejs-fact/
+	$ git clone https://github.com/alexa-samples/skill-sample-nodejs-celebrity-older-or-younger/
 	```
 
-3. If it's your first time using it, **configure** the [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html?&sc_category=Owned&sc_channel=RD&sc_campaign=Evangelism2018&sc_publisher=github&sc_content=Content&sc_detail=fact-nodejs-V2_CLI-1&sc_funnel=Convert&sc_country=WW&sc_medium=Owned_RD_Evangelism2018_github_Content_fact-nodejs-V2_CLI-1_Convert_WW_beginnersdevs&sc_segment=beginnersdevs) by navigating into the repository and running npm command: `ask configure`. Follow the prompts.
+3. If it's your first time using it, **configure** the [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html) by navigating into the repository and running npm command: `ask configure`. Follow the prompts.
 
 	```bash
-	$ cd skill-sample-nodejs-fact
+	$ cd skill-sample-nodejs-celebrity-older-or-younger
 	$ ask configure
 	```
 
-4. Install npm dependencies by navigating into the `/lambda/custom` directory and running the npm command: `npm install --save`
+4. Install npm dependencies by navigating into the `/lambda` directory and running the npm command: `npm install --save`
 
 	```bash
-	$ cd lambda/custom
+	$ cd lambda
 	$ npm install
 	```
 
@@ -55,7 +55,7 @@ ASK CLI **will create the skill and the lambda function for you**. The Lambda fu
 
 1. To test, you need to login to Alexa Developer Console, and **enable the "Test" switch on your skill from the "Test" Tab**.
 
-2. Simulate verbal interaction with your skill through the command line (this might take a few moments) using the following example:
+2. Simulate vocal interaction with your skill through the command line (this might take a few moments) using the following example:
 
 	```bash
 	 $ ask dialog -l en-US 
@@ -65,30 +65,25 @@ ASK CLI **will create the skill and the lambda function for you**. The Lambda fu
 	 ========================================== Alexa will then evaluate your input and give a response!
 	 ========================================== Use ".record <fileName>" or ".record <fileName> --append-quit" to save list of utterances to a file. 
 	 ========================================== You can exit the interactive mode by entering ".quit" or "ctrl + c". 
-	 User  > open space facts
+	 User  > open celebrity older or younger
 	 ...
 	 ```
 
-3. Once the "Test" switch is enabled, your skill can be tested on devices associated with the developer account as well. Speak to Alexa from any enabled device, from your browser at [echosim.io](https://echosim.io/welcome), or through your Amazon Mobile App and say :
-
-	```text
-	Alexa, open space facts
-	```
 ## Customization
 
 1. ```.skill-package/skill.json```
 
    Change the skill name, example phrase, icons, testing instructions etc ...
 
-   Remember than many information are locale-specific and must be changed for each locale (en-GB and en-US)
+   Remember than most information is locale-specific and must be changed for each locale (en-GB and en-US)
 
-   See the Skill [Manifest Documentation](https://developer.amazon.com/docs/smapi/skill-manifest.html?&sc_category=Owned&sc_channel=RD&sc_campaign=Evangelism2018&sc_publisher=github&sc_content=Survey&sc_detail=fact-nodejs-V2_CLI-3&sc_funnel=Convert&sc_country=WW&sc_medium=Owned_RD_Evangelism2018_github_Survey_fact-nodejs-V2_CLI-3_Convert_WW_beginnersdevs&sc_segment=beginnersdevs) for more information.
+   See the Skill [Manifest Documentation](https://developer.amazon.com/docs/smapi/skill-manifest.html) for more information.
 
-2. ```./lambda/custom/index.js```
+2. ```./lambda/index.js```
 
    Modify messages, and data from the source code to customize the skill.
 
-3. ```./models/*.json```
+3. ```./skill-package/interactionModels/custom/*.json```
 
 	Change the model definition to replace the invocation name and the sample phrase for each intent.  Repeat the operation for each locale you are planning to support.
 

@@ -1,7 +1,7 @@
-# Build An Alexa Fact Skill
+# Build An Alexa Entities Skill
 <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
 
-This Alexa sample skill is a template for a basic fact skill.
+This Alexa sample skill is a template for Alexa Entities. The skill uses Alexa Entities, persistent data, and APL to implement a version of the popular game Higher or Lower using celebrity birthdates.
 
 ## Skill Architecture
 Each skill consists of two basic parts, a front end and a back end.
@@ -13,7 +13,7 @@ The back end is where the logic of your skill resides.
 There are a number of different ways for you to setup your skill, depending on your experience and what tools you have available.
 
  * If this is your first skill, choose the [Alexa-Hosted backend instructions](./instructions/setup-vui-alexa-hosted.md) to get started quickly.
- * If you want to manage the backend resources in your own AWS account, you can follow the [AWS-Hosted instructions](https://developer.amazon.com/en-US/docs/alexa/custom-skills/host-a-custom-skill-as-an-aws-lambda-function.html).
+ * If you want to manage the backend resources in your own AWS account, you can follow the [AWS-Hosted instructions](./instructions/setup-vui-aws-hosted.md).
  * Developers with the ASK Command Line Interface configured may follow the [ASK CLI instructions](./instructions/cli.md).
 
 ---
@@ -31,3 +31,13 @@ There are a number of different ways for you to setup your skill, depending on y
 ### Documentation
 * [Official Alexa Skills Kit SDK for Node.js](http://alexa.design/node-sdk-docs) - The Official Node.js SDK Documentation
 * [Official Alexa Skills Kit Documentation](https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html) - Official Alexa Skills Kit Documentation
+* [Official Alexa Entities Documentation](https://developer.amazon.com/en-US/docs/alexa/custom-skills/alexa-entities-reference.html)
+
+## Security
+
+See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+
+## License
+
+This library is licensed under the Amazon Software License.
+
