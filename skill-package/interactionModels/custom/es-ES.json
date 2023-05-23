@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "tecno news",
+      "invocationName": "tecno newsExample",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
