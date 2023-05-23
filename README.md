@@ -9,3 +9,5 @@ Los datos personales que les solicitamos a nuestros clientes son:
 Nombre del cliente de la skill.
 Numero idenficativo del usuario de Alexa.
 Conjunto de intereses sobre noticias en función del uso que se le ha dado a la skill.
+
+En la rama skill se puede consultar el codigo completo de la skill.
