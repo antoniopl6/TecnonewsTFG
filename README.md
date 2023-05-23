@@ -1,26 +1,33 @@
-# Part 10 - ASK CLI
+# Build An Alexa Fact Skill
+<img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
 
-#   # Milestones
+This Alexa sample skill is a template for a basic fact skill.
 
-1. *CLI*: Install ASL CLI via NPM
-2. *CLI*: Do an "ask init"
-3. *CLI*: Try "ask clone"
-4. *CLI*: Explain dev cycle in AHS -> git commit & ask deploy (with VS Code plugin)
+## Skill Architecture
+Each skill consists of two basic parts, a front end and a back end.
+The front end is the voice interface, or VUI.
+The voice interface is configured through the voice interaction model.
+The back end is where the logic of your skill resides.
 
-## Concepts
+## Three Options for Skill Setup
+There are a number of different ways for you to setup your skill, depending on your experience and what tools you have available.
 
-1. Configuring the ASK-CLI with personal AWS account support
-2. Cloning an Alexa Hosted Skill
-3. Editing a skill in code and deploying the skill
+ * If this is your first skill, choose the [Alexa-Hosted backend instructions](./instructions/setup-vui-alexa-hosted.md) to get started quickly.
+ * If you want to manage the backend resources in your own AWS account, you can follow the [AWS-Hosted instructions](https://developer.amazon.com/en-US/docs/alexa/custom-skills/host-a-custom-skill-as-an-aws-lambda-function.html).
+ * Developers with the ASK Command Line Interface configured may follow the [ASK CLI instructions](./instructions/cli.md).
 
-## Diff
+---
 
-1. **media/**: moved media files directory to top level. Make sure yo upload all media files
-2. **.ask/config**: this new file now includes deployment data
-3. **skill.json**: this file now includes deployment data (+uri)
+## Additional Resources
 
-## Videos
+### Community
+* [Amazon Developer Forums](https://forums.developer.amazon.com/spaces/165/index.html) - Join the conversation!
+* [Hackster.io](https://www.hackster.io/amazon-alexa) - See what others are building with Alexa.
 
-[EN](https://alexa.design/zerotohero10)/[DE](https://alexa.design/de_zerotohero10)/[FR](https://alexa.design/fr_zerotohero10)/[IT](https://alexa.design/it_zerotohero10)/[ES](../README_ES.md)
-(EN version includes the following subtitles: EN, DE, PT)
+### Tutorials & Guides
+* [Voice Design Guide](https://developer.amazon.com/designing-for-voice/) - A great resource for learning conversational and voice user interface design.
+* [Codecademy: Learn Alexa](https://www.codecademy.com/learn/learn-alexa) - Learn how to build an Alexa Skill from within your browser with this beginner friendly tutorial on Codecademy!
 
+### Documentation
+* [Official Alexa Skills Kit SDK for Node.js](http://alexa.design/node-sdk-docs) - The Official Node.js SDK Documentation
+* [Official Alexa Skills Kit Documentation](https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html) - Official Alexa Skills Kit Documentation
