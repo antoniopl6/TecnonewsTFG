@@ -1,0 +1,22 @@
+<eBD:SET VAR="res" VALUE='{ "news": [] }' />
+<eBD:SET VAR="news" VALUE='' />
+<eBD:QUERY NAME="noticias" DATASOURCE="default">
+  select idNoticia, titulo, descbreve, fechaPub, textoCompleto, tags, foto, video
+  from noticias
+  order by fechaPub desc 
+  limit 20
+</eBD:QUERY>
+<eBD:IF EXPR="&noticias > 0">
+  <eBD:FOREACH QUERY="noticias">
+    <eBD:FETCHROW QUERY="noticias" NAME="n"/>
+    <eBD:IF EXPR="$news == ''">
+      <eBD:SET VAR="news" VALUE='{"id":&n.idNoticia,"title":"&n.titulo","date":"&n.fechaPub","subtitle":"&n.descbreve","fulltext":"&n.textoCompleto","tags":&n.tags,"image":"&n.foto","video":"&n.video"}' />
+      <eBD:ELSE>
+        <eBD:SET VAR="news" VALUE='$news,{"id":&n.idNoticia,"title":"&n.titulo","date":"&n.fechaPub","subtitle":"&n.descbreve","fulltext":"&n.textoCompleto","tags":&n.tags,"image":"&n.foto","video":"&n.video"}' />
+      </eBD:ELSE>
+    </eBD:IF>
+
+  </eBD:FOREACH>
+</eBD:IF>
+<eBD:SET VAR="res" VALUE='{ "news": [$news] }' />
+<eBD:OUT VALUE='$res'/>

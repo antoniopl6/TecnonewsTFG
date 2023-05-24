@@ -10,4 +10,8 @@ Nombre del cliente de la skill.
 Numero idenficativo del usuario de Alexa.
 Conjunto de intereses sobre noticias en función del uso que se le ha dado a la skill.
 
+# Notas de repositorio
+
 En la rama skill se puede consultar el codigo completo de la skill.
+
+dataNewsTFG.json.ebdml contiene el codigo al archivo dinamico en lenguaje ebdml que serviría para extraer noticias de una base de datos utilizando Kane
