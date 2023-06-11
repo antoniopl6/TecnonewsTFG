@@ -7,10 +7,11 @@ module.exports = {
             WELCOME_MSG: `Bienvenido a Tecnonews {{user}}! `,
             WELCOME_MSG_WO_NAME: `Bienvenido a Tecnonews! `,
             WELCOME_BACK_MSG: 'Bienvenido de vuelta a <lang xml:lang="en-US">Tecnonews</lang>, {{user}}. ',
-            NO_PERMISSIONS: 'Bienvenido a Tecnonews! Puedes seguir utilizando esta skill, pero para ofrecerte respuestas personalizadas Tecnonews necesita acceso a tu nombre completo y a la personalización de perfil. Por favor, ve a la pantalla de inicio en tu aplicación Alexa y otorga los permisos.',
+            NO_PERMISSIONS: 'Bienvenido a Tecnonews! Puedes seguir utilizando esta skill y escuchar las noticias mas recientes, pero para ofrecerte respuestas personalizadas Tecnonews necesita acceso a tu nombre completo y a la personalización de perfil. Por favor, ve a la pantalla de inicio en tu aplicación Alexa y otorga los permisos.',
             PERMISSIONS: 'Para ofrecerte respuestas personalizadas Tecnonews necesita acceso a tu nombre completo y a la personalización de perfil. Por favor, ve a la pantalla de inicio en tu aplicación Alexa y otorga los permisos.',
             
-            INTRO: 'Va a escuchar una serie de noticias, puedes pasarlas diciendo pasa o dejar de escucharlas diciendo para. ',
+            INTRO: 'Va a escuchar una serie de noticias, puedes pasarlas diciendo pasa o dejar de escucharlas diciendo para. También puedes escuchar por completo una noticia diciendo: Alexa, abre la noticia. ',
+            INTRO_TAG: 'Va a escuchar una serie de noticias sobre {{tag}}, puedes pasarlas diciendo pasa o dejar de escucharlas diciendo para. También puedes escuchar por completo una noticia diciendo: Alexa, abre la noticia. ',
             MISSING_DATA: 'Parece que aun no hay información suficiente para recomendarte noticias, puedes probar a escuchar las noticias más recientes diciendo: Alexa, dame las noticias más recientes. ',
             POST_SAY_INTRO_MSG_RECOMMENDATIONS: `Parece que hay noticias que pueden ser de tu interès, puedes escucharlas o si prefieres, puedes oir las noticias más recientes. `,
             POST_SAY_INTRO_MSG: `Hay nuevas noticias en <lang xml:lang="en-US">Tecnonews</lang>. Puedes escucharlas diciendo: Alexa, dame las noticias mas recientes. `,
@@ -28,7 +29,7 @@ module.exports = {
             HELP_MSG_WITH_REC: 'Puedes escuchar noticias más recientes diciendo: Alexa, dame las noticias más recientes. O también escuchar las recomendadas diciendo: Alexa, dame mis noticias recomendadas. ',
             HELP_MSG: 'Puedes oir las nuevas noticias, diciendo Dame las noticias más recientes. O las de un tema en concreto diciendo por ejemplo: Alexa, dame las noticias sobre <lang xml:lang="en-US">software</lang>. ',
             HELP_MSG_OPEN_STATE: 'Puedes volver a escuchar la noticia diciendo: Alexa, repite. O salir de esta diciendo: Cancelar.',
-            HELP_MSG_LIST_STATE: 'Puedes seguir escuchando más noticias diciendo: Siguiente. O dejar de escucharlas diciendo Para. También puedes volver a escuchar la noticia que se has escuchado diciendo: Alexa, repite. ',
+            HELP_MSG_LIST_STATE: 'Puedes seguir escuchando más noticias diciendo: Siguiente. O dejar de escucharlas diciendo: Para. También puedes volver a escuchar la noticia que se has escuchado diciendo: Alexa, repite. Para oír por completo la noticia que acabas de escuchar puedes decir: Alexa, abre la noticia.',
             
             GOODBYE_MSG: 'Hasta pronto! ',
             ERROR_MSG: 'Ha habido un error con tu petición. Por favor, intentalo de nuevo.',

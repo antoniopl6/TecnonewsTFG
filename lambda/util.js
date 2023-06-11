@@ -3,7 +3,7 @@
  **/
  
 const AWS = require('aws-sdk');
-var https = require('http');
+var https = require('https');
 const s3SigV4Client = new AWS.S3({
     signatureVersion: 'v4',
     region: process.env.S3_PERSISTENCE_REGION
@@ -96,8 +96,24 @@ async function getLastModifiedDate(keyName) {
         return date;
 }
 function jsonEscape(str)  {
-    return str.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
+    return str.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t").replace(/""/g, '"');
 }
+
+//Deletes html tags and \\n in final of the string to make a valid json
+function deleteHTMLTags(jsonString) {
+  // Search for HTML tags using a regular expression
+  var regex = /<[^>]*>/g;
+  
+  // Replace HTML tags with an empty string
+  var jsonNoHTML = jsonString.replace(regex, '');
+  
+  //regex = /\\n$/;
+  //jsonNoHTML = jsonNoHTML.replace(regex, '');
+  const closingBraceIndex = jsonNoHTML.lastIndexOf('}');
+  jsonNoHTML = jsonNoHTML.substring(0, closingBraceIndex + 1);
+  return jsonNoHTML;
+}
+
 //Given url from external API, returns the string txt parsed in a JSON from this API. Otherwise returns an error
 const getJsonFromUrl = async (txtUrl) =>  new Promise((resolve, reject) => {
     https.get(txtUrl, (response) => {
@@ -111,7 +127,8 @@ const getJsonFromUrl = async (txtUrl) =>  new Promise((resolve, reject) => {
             //Remove all characters before first {, becouse ebd puts some spaces and new lines before the json of news
             txtFetch = txtFetch.substring(txtFetch.indexOf("{"));
             //parse Json and escape it, so new lines, tabs and returns get ok for json format
-            resolve(JSON.parse(jsonEscape(txtFetch)));
+            console.log("json cogido:" + deleteHTMLTags(jsonEscape(txtFetch)))
+            resolve(JSON.parse(deleteHTMLTags(jsonEscape(txtFetch))));
         });
         
         
@@ -130,6 +147,22 @@ const getLastWebUpdate = async (url) =>  new Promise((resolve, reject) => {
     }).end();
 })
 
+const getJsonWTags = (json) => {
+    const news = json.news;
+    news.forEach(newJ => {
+        //obtain tags for each new in text format
+        const tagsStr = newJ.tags;
+        // Convert tags str into list
+        const tagsList = tagsStr.split(' ');
+        const filteredStrings = tagsList.filter((str) => str !== null && str !== "");
+        // Update the tag camp with a list of tags
+        newJ.tags = filteredStrings;
+    });
+    
+   return json;
+}
+
+
 module.exports = {
     getS3PreSignedUrl,
     putS3Object,
@@ -137,5 +170,6 @@ module.exports = {
     getS3Object,
     getLastModifiedDate,
     getJsonFromUrl,
-    getLastWebUpdate
+    getLastWebUpdate,
+    getJsonWTags
 };

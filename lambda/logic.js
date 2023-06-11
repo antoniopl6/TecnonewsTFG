@@ -47,6 +47,17 @@ function getIndexInList(list, value) {
    return list.findIndex( (listVal) => listVal === value);        
 }
 
+//Get last news, with not viewed ones
+const getLastList = (json, viewedNews) => {
+    var lastList = [];
+
+    for (let i = 0; i < json.news.length ; i++){
+        if (getIndexInList(viewedNews, json.news[i].id) === -1){
+            lastList.push([i]);
+        }
+    }
+    return lastList;
+}
 
 /**
  * Given interests list and json file of news returns the recommended list (list of pairs of index and value)
@@ -129,9 +140,7 @@ const getTagList = (tag, json) => {
     }
     return tagList;
 }
-/**
- * Export the list of needed for clients to use
- **/
+
 module.exports = {
     getProfileName,
     getPersonId,
@@ -140,5 +149,6 @@ module.exports = {
     setInterest,
     setViewedNew,
     deleteFromRecList,
-    getTagList
+    getTagList,
+    getLastList
 };

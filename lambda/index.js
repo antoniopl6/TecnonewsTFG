@@ -12,11 +12,11 @@ const languagesStrings = require('./languages/languagesStrings');
 const logic = require('./logic');
 const Util = require('./util.js');
 const datas = require('./datasources');
+const replaceHTML = require('./replaceCharsHTML.js');
 //Dynamic url used to retrieve the news from tecnonews
 //const urlTecnonews = 'https://www.tecnonews.info/imgfiles/alexa/sample.txt';
-const urlTecnonews = 'http://95.216.138.138:8124/dataNewsTFG.json';
+const urlTecnonews = 'https://www.tecnonews.info/alexarss.json';
 var json;
-
 //APL for multimodals devices
 const DOCUMENT_ID_HOME = "Tecnonews";
 const DOCUMENT_ID_NEW = "new";
@@ -25,19 +25,27 @@ const DOCUMENT_ID_OPEN_NEW_VIDEO = "new_and_video_v5";
 
 //Function to handle with special symbols that may cause our skill to fail 
 function norm(text) {
-   return text.replace(/&/g, "&amp;")
+    const characterMap = replaceHTML.characterMap();
+    const regex = new RegExp(Object.keys(characterMap).join('|'), 'g');
+    const regex2 = /&[^;]+;/g;
+    //normText = normText.replace(regex, (match) => characterMap[match]);
+       return text//.replace(/&/g, "&amp;")
+       //.replace(/\\r\\n/g, "<break time=\"0.3s\"/>")
+       .replace(regex, (match) => characterMap[match])
+       .replace(/\\r\\n/g, "<break time=\"0.15s\"/>")
+       .replace(/\\t/g, "")
+       .replace(regex2, '');
+}
+function normNText(text) {
+    
+       return text.replace(/&/g, "&amp;")
          .replace(/</g, "&lt;")
          .replace(/>/g, "&gt;")
          .replace(/"/g, "&quot;")
          .replace(/'/g, "&#39;")
-         .replace(/#en-Us#/g, "<lang xml:lang=\"en-US\">")
-         .replace(/#en-Us\/#/g, "</lang>")
-         .replace(/#lbreak#/g, "<break time=\"0.3s\"/>")
-         .replace(/#parag#/g, "<break time=\"0.45s\"/>")
-         .replace(/\\n/g, "\n")
-         .replace(/\\r/g, "\r");        
 }
-
+       
+       
 const PERMISSIONS = ['alexa::profile:name:read', 'alexa::person_id:read']
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -56,7 +64,7 @@ const LaunchRequestHandler = {
         const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
 
         const consentToken = handlerInput.requestEnvelope.context.System.apiAccessToken;
-        if (!consentToken || !logic.getPerson(handlerInput)) {
+        if (!consentToken) {
           speakOutput = handlerInput.t('NO_PERMISSIONS');
           return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -79,18 +87,20 @@ const LaunchRequestHandler = {
                 speakOutput = handlerInput.t('WELCOME_MSG_WO_NAME');
                 
             }
-            speakOutput += handlerInput.t('PERMISSIONS');
-            return handlerInput.responseBuilder
-                .speak(speakOutput)
-                .withAskForPermissionsConsentCard(PERMISSIONS)
-                .getResponse();
+            //speakOutput += handlerInput.t('PERMISSIONS');
+            //return handlerInput.responseBuilder
+                //.speak(speakOutput)
+                //.withAskForPermissionsConsentCard(PERMISSIONS)
+                //.getResponse();
         }
-        
-        if(user.length > 0 && user){
-            speakOutput = handlerInput.t('WELCOME_BACK_MSG', {user: user});
-        } else {
-            speakOutput = handlerInput.t('WELCOME_MSG_WO_NAME');
+        else {
+            if(user.length > 0 && user){
+                speakOutput = handlerInput.t('WELCOME_BACK_MSG', {user: user});
+            } else {
+                speakOutput = handlerInput.t('WELCOME_MSG_WO_NAME');
+            }
         }
+       
 
         
         //Instructions for the user
@@ -127,16 +137,20 @@ const NewNewsIntentHandler = {
         const currIdx = 0;
         
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        const viewedNews = sessionAttributes.viewedNews;
+        const lastList = logic.getLastList(json, viewedNews);
+        sessionAttributes.lastList = lastList;
         sessionAttributes.currIdx = currIdx;
-        const actualNew = json.news[currIdx];
-
+        
         //If we can retrieve news then say intro speech and the first new
-        if (json.news.length > 0){
+        if (lastList.length > 0){
+            const actualNew = json.news[sessionAttributes.lastList[currIdx]];
             speakOutput = handlerInput.t('INTRO');
             sessionAttributes.currList = 'newNews';
+            sessionAttributes.viewedNews = logic.setViewedNew(sessionAttributes.viewedNews, json, lastList[currIdx]);
             
-            title = norm(actualNew.title);
-            subtitle = norm(actualNew.subtitle);
+            title = normNText(actualNew.title);
+            subtitle = normNText(actualNew.subtitle);
             imageUrl = actualNew.image;
             date = actualNew.date;
             speakOutput += `${title} <break strength="x-strong"/>`;
@@ -185,11 +199,12 @@ const TagNewsIntentHandler = {
             sessionAttributes.tagList = tagList;
             sessionAttributes.currList = 'tagNews';
             const actualNew = json.news[tagList[currIdx]];
-            title = norm(actualNew.title);
-            subtitle = norm(actualNew.subtitle);
+            sessionAttributes.viewedNews = logic.setViewedNew(sessionAttributes.viewedNews, json, tagList[currIdx]);
+            title = normNText(actualNew.title);
+            subtitle = normNText(actualNew.subtitle);
             imageUrl = actualNew.image;
             date = actualNew.date;
-            speakOutput += handlerInput.t('INTRO');
+            speakOutput += handlerInput.t('INTRO_TAG', {tag: tag});
             speakOutput += `${title} <break strength="x-strong"/>`;
             speakOutput += `${subtitle} <break strength="x-strong"/>`;
             
@@ -249,14 +264,14 @@ const RecNewsIntentHandler = {
         //speakOutput = languagesStrings.core.recNewsAvaiable(sessionAttributes.recList);
         const recList = sessionAttributes.recList;
         //If there is reccomendated news, then say intro speech and the first new
-        if (recList !== [] || recList.length > 0){
+        if (recList.length > 0){
             speakOutput = handlerInput.t('INTRO');
             var newIdx = sessionAttributes.recList[currIdx][0];
             const actualNew = json.news[newIdx];
             sessionAttributes.currList = 'recNews';
             
-            title = norm(actualNew.title);
-            subtitle = norm(actualNew.subtitle);
+            title = normNText(actualNew.title);
+            subtitle = normNText(actualNew.subtitle);
             imageUrl = actualNew.image;
             date = actualNew.date
             speakOutput += `${title} <break strength="x-strong"/>`;
@@ -307,10 +322,14 @@ const OpenNewIntentHandler = {
         } else if (sessionAttributes.currList === 'tagNews'){
             currIdx = sessionAttributes.tagList[currIdx];
         }
+        else if (sessionAttributes.currList === 'newNews'){
+            currIdx = sessionAttributes.lastList[currIdx];
+        }
+        
         
         var speakOutput = '';
         const actualNew = json.news[currIdx];
-        const title = norm(actualNew.title);
+        const title = normNText(actualNew.title);
         const fulltext = norm(actualNew.fulltext);
         const imageUrl = actualNew.image;
         const date = actualNew.date;
@@ -368,7 +387,7 @@ const NextIntentHandler = {
         var currIdx = sessionAttributes.currIdx;
         
         currIdx++;
-        if ((sessionAttributes.currList === 'newNews' && currIdx < json.news.length) 
+        if ((sessionAttributes.currList === 'newNews' && currIdx < sessionAttributes.lastList.length)
         || (sessionAttributes.currList === 'recNews' && currIdx < sessionAttributes.recList.length)
         || (sessionAttributes.currList === 'tagNews' && currIdx < sessionAttributes.tagList.length)){
             
@@ -380,11 +399,15 @@ const NextIntentHandler = {
                 
             } else if (sessionAttributes.currList === 'tagNews'){
                 currIdx = sessionAttributes.tagList[currIdx];
+                sessionAttributes.viewedNews = logic.setViewedNew(sessionAttributes.viewedNews, json, currIdx);
+            } else if (sessionAttributes.currList === 'newNews'){
+                currIdx = sessionAttributes.lastList[currIdx];
+                sessionAttributes.viewedNews = logic.setViewedNew(sessionAttributes.viewedNews, json, currIdx);
             }
             
             const actualNew = json.news[currIdx];
-            title = norm(actualNew.title);
-            subtitle = norm(actualNew.subtitle);
+            title = normNText(actualNew.title);
+            subtitle = normNText(actualNew.subtitle);
             imageUrl = actualNew.image;
             date = actualNew.date;
             speakOutput += `${title} <break strength="x-strong"/>`;
@@ -482,11 +505,14 @@ const RepeatIntentHandler = {
         if (sessionAttributes.currList === 'tagNews') {
             currIdx = sessionAttributes.tagList[currIdx];
         }
+        if (sessionAttributes.currList === 'newNews') {
+            currIdx = sessionAttributes.lastList[currIdx];
+        }
         
         var speakOutput = '';
         if (sessionAttributes.inOpenState === false) {
-            var title = norm(json.news[currIdx].title);
-            var subtitle = norm(json.news[currIdx].subtitle);
+            var title = normNText(json.news[currIdx].title);
+            var subtitle = normNText(json.news[currIdx].subtitle);
             speakOutput += `${title} <break strength="x-strong"/>`;
             speakOutput += `${subtitle} <break strength="x-strong"/>`;
         } else {
@@ -654,7 +680,7 @@ const LocalisationRequestInterceptor = {
 const LoadAttributesRequestInterceptor = {
     async process(handlerInput) {
         const {attributesManager, requestEnvelope} = handlerInput;
-        if (Alexa.isNewSession(requestEnvelope)){ //is this a new session? this check is not enough if using auto-delegate
+        if (Alexa.isNewSession(requestEnvelope)){ //is this a new session?
             await datas.loadMedia();
             const persistentAttributes = await attributesManager.getPersistentAttributes() || {};
             
@@ -663,16 +689,19 @@ const LoadAttributesRequestInterceptor = {
             persistentAttributes.currList = '';
             persistentAttributes.tagList = [];
             persistentAttributes.inOpenState = false;
-            
             const interests = persistentAttributes.interests;
             const viewedNews = persistentAttributes.viewedNews;
-            if (!interests || interests === null) { 
+
+            if (persistentAttributes.sessionCount === null || !persistentAttributes.sessionCount) { 
+                //init values
+                persistentAttributes.lastList = logic.getLastList(json, []);
                 persistentAttributes.interests = [];
-                persistentAttributes.viewedNews = []; //If the user has no interests, then he haven't seen any news, so we leave the viewed news list empty
+                persistentAttributes.viewedNews = []; 
                 persistentAttributes.recList = [];
             }
             else {
                 persistentAttributes.recList = logic.getRecList(interests, json, viewedNews)
+                persistentAttributes.lastList = logic.getLastList(json, viewedNews);
             }
             //copy persistent attribute to session attributes
             attributesManager.setSessionAttributes(persistentAttributes); // ALL persistent attributtes are now session attributes
@@ -686,26 +715,30 @@ const GetJsonFileRequestInterceptor = {
     async process(handlerInput) {
         const {attributesManager, requestEnvelope} = handlerInput;
 
-        json = await Util.getJsonFromUrl(urlTecnonews);
-        /*if (Alexa.isNewSession(requestEnvelope)){ //is this a new session? this check is not enough if using auto-delegate
+        if (Alexa.isNewSession(requestEnvelope)){ //is this a new session?
+            //json = await Util.getJsonFromUrl(urlTecnonews);
             const lastDateWeb = await Util.getLastWebUpdate(urlTecnonews);
             const modifiedDateFile = await Util.getLastModifiedDate("news.json");
             //12 hours in miliseconds, so the file in S3 is updated if more than 12 hours have passed
             const hours12 = 432e5;
             
-            if ((lastDateWeb - modifiedDateFile) > hours12) {
+            //if ((lastDateWeb - modifiedDateFile) > hours12) {
             //if ((modifiedDateFile - lastDateWeb) > hours12){
                 json = await Util.getJsonFromUrl(urlTecnonews);
-                await Util.putS3Object('news.json', json);
-            }
-            else {
-                json = JSON.parse(await Util.getS3Object("news.json"));
-            }
+                console.log("json index:" + json)
+                // In the database, the tags field is stored as a string, so we pass from string to list for each news item
+                json = Util.getJsonWTags(json);
+                //await Util.putS3Object('news.json', json);
+            //}
+            //else {
+                //json = JSON.parse(await Util.getS3Object("news.json"));
+            //}
             
             
-            //manual include for images
+            //manual include for testing in template
             //json = require('./template-data.json');
-        }*/
+            //json = Util.getJsonWTags(json);
+        }
     }
 }
 

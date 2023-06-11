@@ -51,7 +51,7 @@ const dataNew = (imgURL, title, subtitle, date) =>  {
             "foregroundImageSource": imgURL,
             "headerTitle": "",
             "headerSubtitle": "",
-            "hintText": "Prueba, \"Alexa, siguiente noticia\"",
+            "hintText": "Prueba, \"Alexa, siguiente noticia\" o \"Alexa, abrela\"",
             "headerAttributionImage": logotecnonews,
             "primaryText": subtitle,
             "textAlignment": "start",
