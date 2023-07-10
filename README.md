@@ -1,3 +1,7 @@
+# ¡También disponible en la tienda de skills de alexa!
+
+https://www.amazon.es/UPF-Tecnonews/dp/B0C62GPXZ6/ref=sr_1_5?brr=1&qid=1689003055&rd=1&s=digital-skills&sr=1-5
+
 # Tecnonews Aviso de Privacidad
  
 La empresa Tecnonews conforme con lo establecido en la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales ponemos a disposición de nuestros clientes, proveedores y público el presente aviso de privacidad.
