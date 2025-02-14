@@ -1,0 +1,132 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "tecno news",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": [
+            "volver",
+            "volver al inicio",
+            "cancelalo",
+            "cancelar"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "para"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "nuevasNoticias",
+          "slots": [],
+          "samples": [
+            "dame las noticias más recientes",
+            "las mas nuevas",
+            "las nuevas",
+            "las más recientes",
+            "últimas noticias",
+            "dame las nuevas noticias",
+            "nuevas noticias",
+            "Dame las últimas noticias"
+          ]
+        },
+        {
+          "name": "noticiasRecomendadas",
+          "slots": [],
+          "samples": [
+            "las de mi interès",
+            "dame mis noticias recomendadas",
+            "las mas recomendadas",
+            "las recomendadas",
+            "noticias recomendadas",
+            "Dame noticias de mi interes",
+            "Dame noticias recomendadas"
+          ]
+        },
+        {
+          "name": "AMAZON.NextIntent",
+          "samples": [
+            "otra",
+            "continua",
+            "siguiente noticia",
+            "siguiente",
+            "pasa"
+          ]
+        },
+        {
+          "name": "AMAZON.RepeatIntent",
+          "samples": [
+            "repitela",
+            "otra vez",
+            "vuelve a decirla",
+            "volver a escuchar",
+            "repite la noticia",
+            "repite"
+          ]
+        },
+        {
+          "name": "openNew",
+          "slots": [],
+          "samples": [
+            "abre la noticia",
+            "abrela",
+            "abrir"
+          ]
+        },
+        {
+          "name": "abrirCategoria",
+          "slots": [
+            {
+              "name": "tag",
+              "type": "tags"
+            }
+          ],
+          "samples": [
+            "noticias de {tag}",
+            "dame noticias sobre {tag}",
+            "noticias sobre {tag}",
+            "sobre {tag}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "IA"
+              }
+            },
+            {
+              "name": {
+                "value": "ERP"
+              }
+            },
+            {
+              "name": {
+                "value": "redes sociales"
+              }
+            },
+            {
+              "name": {
+                "value": "software"
+              }
+            }
+          ],
+          "name": "tags"
+        }
+      ]
+    }
+  },
+  "version": "54"
+}
